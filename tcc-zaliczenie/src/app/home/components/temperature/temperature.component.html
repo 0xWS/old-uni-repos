@@ -1,0 +1,18 @@
+<mat-card class="temperature-card">
+    <!-- TODO: if location missing display nothing-->
+    <div *ngIf="loading; else temperatureTemplate">
+        <mat-spinner/>
+    </div>
+
+    <ng-template #temperatureTemplate>
+        <mat-card-content>
+            <mat-card-header>
+                <mat-card-title>
+                    Pogoda
+                    <fa-icon [icon]="isDay ? faSun : faMoon"></fa-icon>
+                </mat-card-title>
+            </mat-card-header>
+            <mat-card-content>Temperatura: {{temperature}}°C</mat-card-content>
+        </mat-card-content>
+    </ng-template>
+</mat-card>

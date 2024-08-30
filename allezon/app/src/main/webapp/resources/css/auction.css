@@ -1,0 +1,38 @@
+#content form {
+    margin: 8px auto auto;
+    padding: 0;
+    width: 100px;
+    color: #121843;
+    background-color: lightsteelblue;
+    border: 1px solid black;
+    border-radius: 8px;
+    font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+#auctionTitle {
+    width: 100%;
+    float: left;
+}
+
+#auctionPhotos {
+    width: 90%;
+    float: left;
+}
+
+img.auctionPhoto {
+    height: auto;
+    width: auto;
+    max-width: 25%;
+    max-height: 200px;
+}
+
+#auctionBuy {
+    width: 10%;
+    float: left;
+}
+
+#auctionDescription {
+    width: 100%;
+    float: left;
+}

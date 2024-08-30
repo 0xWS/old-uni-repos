@@ -1,0 +1,21 @@
+<div class="todolist">
+    <mat-list>
+        <div *ngFor="let todo of todos; let i = index">
+            <mat-list-item role="listitem" class="todo-list-item">
+                <todo-list-item
+                    [index] = "i"
+                    [title] = "todo.title"
+                    [description] = "todo.description"
+                    [weather] = "todo.weather"
+                    (removeTodoEmitter)="removeTodo($event)"
+                />
+            </mat-list-item>
+        </div>
+    </mat-list>
+
+    <form (ngSubmit)="addTodo()">
+    <input type="text" [(ngModel)]="newTodoTitle" name="title" placeholder="Title" required>
+    <textarea [(ngModel)]="newTodoDescription" name="description" placeholder="Description (optional)"></textarea>
+    <button type="submit">Add Todo</button>
+    </form>
+</div>

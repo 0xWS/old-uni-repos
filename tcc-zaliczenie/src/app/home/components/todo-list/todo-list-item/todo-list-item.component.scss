@@ -1,0 +1,33 @@
+.todo-list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; 
+    padding: 15px;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .todo-list-item .title {
+    font-weight: bold;
+  }
+  
+  .todo-list-item .description {
+    flex: 1;
+    margin: 0 10px 0px 10px;
+  }
+
+  .todo-list-item .weather {
+    margin: 0 10px 0px 10px;
+  }
+  
+  .todo-list-item .delete button {
+    background-color: #f44336;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  .todo-list-item:hover {
+    background-color: lightgray;
+}

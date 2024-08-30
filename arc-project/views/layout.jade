@@ -1,0 +1,16 @@
+doctype html
+html
+	head
+		title= title
+		link(rel='stylesheet', href='/stylesheets/style.css')
+	body
+		if(loggedIn)
+			div(class="navbar")
+				ul
+					li
+						a(href="/learning" id="learningtab") Nauka
+					li
+						a(href="/wordbase" id="basetab") Baza słówek
+					li
+						a(href="/account/logout") Wyloguj
+		block content

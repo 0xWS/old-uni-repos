@@ -1,0 +1,16 @@
+<mat-card class="clock-card">
+    <!-- TODO: if location missing display nothing-->
+    <div *ngIf="loading; else temperatureTemplate">
+        <mat-spinner/>
+    </div>
+
+    <ng-template #temperatureTemplate>
+        <mat-card-content>
+            <mat-card-header>
+                <mat-card-title>
+                    {{datetimeString}}
+                </mat-card-title>
+            </mat-card-header>
+        </mat-card-content>
+    </ng-template>
+</mat-card>

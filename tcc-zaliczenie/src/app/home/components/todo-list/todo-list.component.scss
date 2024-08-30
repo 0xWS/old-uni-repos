@@ -1,0 +1,38 @@
+.todolist {
+    position: relative;
+}
+
+mat-list {
+    background-color: #f5f5f5;  /* Light background for the list */
+    border-radius: 10px;
+  }
+  
+  form {
+    width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #eee;
+    border-radius: 5px;
+}
+
+input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    box-sizing: border-box;
+}
+
+button[type="submit"] {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+button[type="submit"]:hover {
+    background-color: #45a049;
+}

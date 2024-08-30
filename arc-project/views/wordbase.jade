@@ -1,0 +1,86 @@
+extends layout
+
+block content
+    div(id="wordbase-main")
+        div(class="sidebar")
+            button(type="button" id="addword") Dodaj słowo
+            br
+            button(type="button" id="fromphoto") Dodaj ze zdjęcia
+
+            div(id="popupadd" class="popup")
+                div(class="popup-content")
+                    span(class="close" id="closeadd") &times;
+                    h2 Dodaj własne słowo
+                    form(action="../word/add", method="POST")
+                        label Słowo po polsku
+                        br
+                        input(type="text" name="local")
+                        br
+                        br
+                        label Słowo po hiszpańsku
+                        br
+                        input(type="text" name="foreign")
+                        br
+                        br
+                        input(type="submit" value="Dodaj")
+
+            div(id="popphoto" class="popup")
+                div(class="popup-content")
+                    span(class="close" id="closephoto") &times;
+                    h2 Dodaj własne słowo ze zdjęcia
+                    form(action="../upload" enctype="multipart/form-data" method="POST")
+                        br
+                        input(type="file" name="files")
+                        br
+                        br
+                        input(type="submit" value="Wyślij plik")
+
+        div(id="wordbasediv")
+            br
+            table(id="tableWordbase")
+                    caption Twoje słówka
+                    tr
+                        th Hiszpański
+                        th Polski
+                        th Wykonano
+                        th Usuń
+
+                    if words.length === 0
+                        td(colspan="4" id="no-words") Brak słówek
+                    else
+                        each word in words
+                            tr
+                                td !{word.foreign}
+                                td !{word.local}
+                                td !{word.learn}/3
+                                td
+                                    form(action="../word/#{word.id}" method="POST")
+                                        input(type="submit" value="X")
+
+    script.
+        document.getElementById("basetab").className = "active";
+
+        let popup = document.getElementById("popupadd");
+        let btn = document.getElementById("addword");
+        let span = document.getElementById("closeadd");
+
+        let popphoto = document.getElementById("popphoto");
+        let btnphoto = document.getElementById("fromphoto");
+        let spanphoto = document.getElementById("closephoto");
+
+        btn.onclick = function() {
+            popup.style.display = "block"
+        }
+
+        span.onclick = function() {
+            popup.style.display = "none"
+        }
+
+        btnphoto.onclick = function () {
+            popphoto.style.display = "block"
+        }
+
+        spanphoto.onclick = function () {
+            popphoto.style.display = "none"
+        }
+

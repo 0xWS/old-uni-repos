@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20191021_init
+      author: Wojciech redacted
+      sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: 20191021_init.sql
+  - changeSet:
+      id: 20191224_init
+      author: Wojciech redacted
+      sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: 20191224_init.sql
+  - changeSet:
+      id: 20200115_init
+      author: Wojciech redacted
+      sqlFile:
+        relativeToChangelogFile: true
+        splitStatements: false
+        path: 20200115_init.sql

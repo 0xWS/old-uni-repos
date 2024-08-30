@@ -1,0 +1,193 @@
+openapi: 3.0.0
+
+info:
+  description: "This is a ARC Project server. These APIs give access to Words database and word filter"
+  version: "1.0.0"
+  title: "ARC Project API"
+  #termsOfService: "http://swagger.io/terms/"
+  contact:
+    name: "Zespół do Nauki Języka"
+    email: "arc@fake.com"
+  license:
+    name: Creative Commons
+    url: "https://creativecommons.org/licenses/by/4.0/legalcode"
+tags:
+- name: "word"
+  description: "Everything about your words in database"
+- name: "filter"
+  description: "Word filter"
+paths:
+  /word/{uid}:
+    get:
+      tags:
+      - "word"
+      summary: "Get all words owned by a user"
+      description: ""
+      operationId: "getWords"
+      parameters:
+        - in: path
+          name: uid
+          schema:
+            type: string
+          required: true
+          description: "ID of the user whose words you want to get"
+      responses:
+        "200":
+          description: "Word list of the user."
+          content:
+            application/json:
+              example:
+                {
+                  "IXWI6E1eAaFnzW23qmBM": {
+                    "local": "paradoksalnie",
+                    "foreign": "paradójicamente",
+                    "learn": 0
+                  },
+                  "MohyeDfVGni8NNqmcuR3": {
+                    "local": "gospodarstwo domowe",
+                    "foreign": "domésticos",
+                    "learn": 0
+                  },
+                }
+        "500":
+          description: "Internal server error. Also responds with error message."
+    post:
+      tags:
+      - "word"
+      summary: "Add one or multiple words to database"
+      description: ""
+      operationId: "addWords"
+      parameters:
+        - in: path
+          name: uid
+          schema:
+            type: string
+          required: true
+          description: "string ID of the user who will own the words"
+        - in: query
+          name: wordlist
+          schema:
+            type: array
+            items: 
+              type: object
+      responses:
+        "200":
+          description: "Statistics"
+          content:
+            application/json:
+              example:
+               [
+                {
+                  "_writeTime": {
+                    "_seconds": 1610891531,
+                    "_nanoseconds": 297872000
+                  }
+                },
+                {
+                  "_writeTime": {
+                    "_seconds": 1610891531,
+                    "_nanoseconds": 297872000
+                  }
+                }
+              ]
+        "500":
+          description: "Internal server error. Also responds with error message."
+    delete:
+      tags:
+      - "word"
+      summary: "Delete one or multiple words from database"
+      description: ""
+      operationId: "delWords"
+      parameters:
+        - in: path
+          name: uid
+          schema:
+            type: string
+          required: true
+          description: "string ID of the user who will own the words"
+        - in: query
+          name: deletelist
+          schema:
+            type: array
+            items: 
+              type: string
+      responses:
+        "200":
+          description: "Statistics"
+          content:
+            application/json:
+              example:
+               [
+                {
+                  "_writeTime": {
+                    "_seconds": 1610891531,
+                    "_nanoseconds": 297872000
+                  }
+                },
+                {
+                  "_writeTime": {
+                    "_seconds": 1610891531,
+                    "_nanoseconds": 297872000
+                  }
+                }
+              ]
+        "500":
+          description: "Internal server error. Also responds with error message."
+  /word/{uid}/unlearned/:
+    get:
+      tags:
+      - "word"
+      summary: "Get all unlearned words owned by a user"
+      description: ""
+      operationId: "getUnlearnedWords"
+      parameters:
+        - in: path
+          name: uid
+          schema:
+            type: string
+          required: true
+          description: "ID of the user whose words you want to get"
+      responses:
+        "200":
+          description: "Word list of the user."
+          content:
+            application/json:
+              example:
+                {
+                  "IXWI6E1eAaFnzW23qmBM": {
+                    "local": "paradoksalnie",
+                    "foreign": "paradójicamente",
+                    "learn": 0
+                  },
+                  "MohyeDfVGni8NNqmcuR3": {
+                    "local": "gospodarstwo domowe",
+                    "foreign": "domésticos",
+                    "learn": 0
+                  },
+                }
+        "500":
+          description: "Internal server error. Also responds with error message."
+  /repeatingwords/:
+    get:
+      tags:
+        - filter
+      summary: "Filter of repeating words"
+      parameters:
+        - in: query
+          name: filteredWords
+          schema:
+            type: array
+            items:
+              type: string
+          required: true
+          description: "Filter words that are repeating more than 1 time and filter common spanish prefix words"
+      
+      responses:
+        "200":
+          description: "Successfully returned words after filtering"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string

@@ -1,0 +1,36 @@
+#banner {
+    text-align: center;
+}
+
+#page {
+    text-align: center;
+}
+
+form {
+    margin: 8px auto auto;
+    padding: 0;
+    width: 300px;
+    color: #121843;
+    background-color: lightsteelblue;
+    border: 1px solid black;
+    border-radius: 8px;
+    font-family: 'DejaVu Sans', Arial, Helvetica, sans-serif;
+}
+
+input[type=text], input[type=password], select{
+    width: 94%;
+    height: 32px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+#accounts {
+    font-size: 12px;
+}
+
+a:link{
+    color: #3a24a8;
+    text-decoration: none;
+}
